@@ -1,0 +1,57 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Creates a CloudWatch Logs log group, an ECR repository, and an ECS cluster for Bruna Silveira (bs) in us-east-1.
+
+Resources:
+  # CloudWatch Log Group
+  BSLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /bs-bulklab
+      RetentionInDays: 30
+      Tags:
+        - Key: Owner
+          Value: BrunaSilveira
+        - Key: Environment
+          Value: Dev
+
+  # ECR Repository
+  BSRepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: bs-ecr-crawlers-dev
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      Tags:
+        - Key: Owner
+          Value: BrunaSilveira
+        - Key: Environment
+          Value: Dev
+
+  # ECS Cluster
+  BSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: bs-ecs-cluster-crawlers
+      ClusterSettings:
+        - Name: containerInsights
+          Value: enabled
+      CapacityProviders: []
+      Tags:
+        - Key: Owner
+          Value: BrunaSilveira
+        - Key: Environment
+          Value: Dev
+
+Outputs:
+  LogGroupName:
+    Description: Name of the created CloudWatch Logs group
+    Value: !Ref BSLogGroup
+
+  RepositoryUri:
+    Description: URI of the created ECR repository
+    Value: !GetAtt BSRepository.RepositoryUri
+
+  ECSClusterName:
+    Description: Name of the created ECS Cluster
+    Value: !Ref BSCluster

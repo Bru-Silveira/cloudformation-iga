@@ -1,0 +1,108 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Full sandbox stack with VPC, S3, IAM, RDS and optional EC2 instance
+
+Parameters:
+  DeployEC2:
+    Type: String
+    AllowedValues: ["true", "false"]
+    Default: "true"
+    Description: Whether to deploy an EC2 instance
+
+  InstanceType:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - t3.micro
+    Description: EC2 instance type
+
+  DBUsername:
+    Type: String
+    Default: adminuser
+    NoEcho: true
+
+  DBPassword:
+    Type: String
+    Default: AdminPass123!
+    NoEcho: true
+
+Conditions:
+  CreateEC2: !Equals [ !Ref DeployEC2, "true" ]
+
+Resources:
+
+  MyVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      Tags:
+        - Key: Name
+          Value: SandboxVPC
+
+  MyBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub sandbox-demo-bucket-${AWS::AccountId}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  EC2Role:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: SandboxEC2Role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+
+  MyDBInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: 20
+      DBInstanceClass: db.t3.micro
+      Engine: mysql
+      EngineVersion: "8.0"
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
+      DBInstanceIdentifier: sandbox-db
+      PubliclyAccessible: true
+
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Condition: CreateEC2
+    Properties:
+      InstanceType: !Ref InstanceType
+      ImageId: ami-02b3c03c6fadb6e2c
+      IamInstanceProfile: 
+        Ref: EC2InstanceProfile
+      Tags:
+        - Key: Name
+          Value: SandboxEC2
+
+  EC2InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles:
+        - Ref: EC2Role
+      InstanceProfileName: SandboxEC2InstanceProfile
+
+Outputs:
+  BucketName:
+    Description: The name of the created S3 bucket
+    Value: !Ref MyBucket
+
+  RDSInstanceID:
+    Description: ID of the RDS instance
+    Value: !Ref MyDBInstance
+
+  EC2Status:
+    Description: Was EC2 deployed?
+    Value: !If [CreateEC2, "Deployed", "Skipped"]

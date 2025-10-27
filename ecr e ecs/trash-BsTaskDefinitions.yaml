@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ECS Task Definition for Crawler service 
+
+Resources:
+  # IAM Role used by the ECS task to pull images and send logs
+  ECSTaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: bsEcsTaskExecutionRole-crawlers-dev
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+      Tags:
+        - Key: Owner
+          Value: BrunaSilveira
+        - Key: Environment
+          Value: Dev
+
+  # ECS Task Definition
+  ECSTaskDefinitionCrawlers:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: bs-task-crawlers-dev
+      Cpu: '256'
+      Memory: '512'
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      ExecutionRoleArn: !GetAtt ECSTaskExecutionRole.Arn
+      ContainerDefinitions:
+        - Name: bs-crawler-container
+          Image: 416046234086.dkr.ecr.us-east-1.amazonaws.com/bs-ecr-crawlers-dev:latest
+          Essential: true
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: /bs-bulklab
+              awslogs-region: us-east-1
+              awslogs-stream-prefix: ecs
+          PortMappings:
+            - ContainerPort: 8080
+          Environment:
+            - Name: ENV
+              Value: dev
+
+Outputs:
+  TaskDefinitionArn:
+    Description: ARN of the created ECS Task Definition
+    Value: !Ref ECSTaskDefinitionCrawlers
