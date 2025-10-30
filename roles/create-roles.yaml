@@ -1,0 +1,269 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Criação de 3 roles base para Glue, ECS e EventBridge Scheduler
+
+Resources:
+  # Role para Glue (crawlers, databases e jobs)
+  RoleGlueDeveloper:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: role-glue-developer
+      Path: /
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: # aba Trust relationships
+              - glue.amazonaws.com
+          Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+      Tags:
+        - Key: glue:UsageProfile
+          Value: developer
+
+  # policy-glue
+  PolicyGlue:
+    Type: AWS::IAM::Policy
+    DependsOn: RoleGlueDeveloper # pra não travar por falta de role/arns não criados ainda
+    Properties:
+      PolicyName: policy-glue
+      Roles:
+        - !Ref RoleGlueDeveloper
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - glue:GetUsageProfile
+            Resource:
+              - arn:aws:glue:us-east-1:416046234086:usageProfile/developer
+
+          - Effect: Allow
+            Action:
+              - iam:PassRole
+            Resource: "*"
+            Condition:
+              StringLike:
+                iam:PassedToService:
+                  - glue.amazonaws.com
+
+          - Sid: GluePermissions
+            Effect: Allow
+            Action:
+              - glue:CreateJob
+              - glue:GetJob
+              - glue:UpdateJob
+              - glue:StartJobRun
+            Resource: "*"
+
+          - Effect: Allow
+            Action:
+              - glue:GetDatabase
+              - glue:GetTable
+              - glue:CreateTable
+            Resource:
+              - arn:aws:glue:us-east-1:416046234086:catalog
+              - arn:aws:glue:us-east-1:416046234086:database/*
+              - arn:aws:glue:us-east-1:416046234086:table/*
+
+          - Sid: GetGlueScripts
+            Effect: Allow
+            Action: s3:GetObject
+            Resource: arn:aws:s3:::aws-glue-assets-416046234086-us-east-1/scripts/*
+
+          - Sid: GlueConsoleFullAccess
+            Effect: Allow
+            Action:
+              - glue:*
+              - redshift:Describe*
+              - iam:List*
+              - iam:GetRole*
+              - ec2:Describe*
+              - rds:Describe*
+              - s3:List*
+              - s3:GetBucket*
+              - cloudformation:List*
+              - cloudformation:Describe*
+              - cloudformation:GetTemplateSummary
+              - dynamodb:ListTables
+              - kms:List*
+              - cloudwatch:GetMetricData
+              - cloudwatch:ListDashboards
+              - databrew:List*
+              - databrew:DescribeRecipe
+            Resource: "*"
+
+          - Effect: Allow
+            Action:
+              - logs:CreateLogGroup
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+            Resource: arn:aws:logs:*:*:/aws-glue/*
+
+          - Effect: Allow
+            Action:
+              - s3:PutObject
+              - s3:GetObject
+              - s3:DeleteObject
+              - s3:ListBucket
+              - s3:GetBucketLocation
+              - s3:PutObjectAcl
+              - s3:GetObjectAcl
+            Resource:
+            - arn:aws:s3:::*
+            - arn:aws:s3:::*/*
+
+          - Sid: LogsView
+            Effect: Allow
+            Action:
+              - logs:DescribeLogGroups
+              - logs:DescribeLogStreams
+              - logs:GetLogEvents
+              - logs:GetTransformer
+              - logs:FilterLogEvents
+            Resource: arn:aws:logs:us-east-1:416046234086:log-group:*
+
+          - Effect: Allow
+            Action:
+              - glue:GetDatabase
+              - glue:GetDatabases
+              - glue:GetTable
+              - glue:GetTables
+              - athena:StartQueryExecution
+              - athena:GetQueryResults
+              - athena:GetWorkGroup
+              - athena:GetQueryExecution
+              - athena:GetTableMetadata
+            Resource: "*"
+
+          - Effect: Allow
+            Action:
+              - ce:GetCostAndUsage
+              - ce:GetCostForecast
+              - ce:GetDimensionValues
+              - ce:GetReservationUtilization
+              - ce:GetRightsizingRecommendation
+              - ce:GetSavingsPlansUtilization
+              - ce:GetSavingsPlansUtilizationDetails
+              - ce:GetUsageForecast
+              - ce:ListCostCategoryDefinitions
+            Resource: "*"
+
+          - Effect: Allow
+            Action:
+              - aws-portal:ViewBilling
+              - aws-portal:ViewUsage
+              - cur:DescribeReportDefinitions
+              - organizations:ListAccounts
+            Resource: "*"
+
+  # policy-restrict-region
+  PolicyRestrictRegion:
+    Type: AWS::IAM::Policy
+    DependsOn: RoleGlueDeveloper
+    Properties:
+      PolicyName: policy-restrict-region
+      Roles:
+        - !Ref RoleGlueDeveloper
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: DenyAccessOutsideUSEast1
+            Effect: Deny
+            Action: "*"
+            Resource: "*"
+            Condition:
+              StringNotEquals:
+                aws:RequestedRegion: "us-east-1"
+
+  # Role para ECS Tasks (para executar containers e acessar ECR/S3)
+  ECSTaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: ecsTaskExecutionRole
+      Path: /
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+      Tags:
+        - Key: Project
+          Value: ECSMigration
+
+  # policy-tmp-tst-secrets
+  PolicyTmpTstSecrets:
+    Type: AWS::IAM::Policy
+    DependsOn: ECSTaskExecutionRole
+    Properties:
+      PolicyName: policy-tmp-tst-secrets
+      Roles:
+        - !Ref ECSTaskExecutionRole
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action: "secretsmanager:GetSecretValue"
+            Resource: 
+              - !Sub "arn:aws:secretsmanager:us-east-1:416046234086:secret:*" # policy vale para qualquer secret da conta e região onde o stack for criado
+          
+          - Effect: Allow
+            Action: "glue:StartCrawler"
+            Resource: "arn:aws:glue:us-east-1:416046234086:crawler/*"
+            
+
+  # Role para EventBridge Scheduler (para rodar tasks ECS)
+  ECSEventsRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: ecsEventsRole
+      Path: /
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: 
+                - scheduler.amazonaws.com
+                - events.amazonaws.com
+            Action: sts:AssumeRole
+
+  # policy ecsEventsInvokeECS
+  ECSEventsInvokeECS:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: ecsEventsInvokeECS
+      Roles:
+        - !Ref ECSEventsRole
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action: "ecs:RunTask"
+            Resource: "*"
+          
+          - Effect: Allow
+            Action: "iam:PassRole"
+            Resource: !GetAtt ECSTaskExecutionRole.Arn  # CloudFormation resolve automaticamente o ARN correto
+
+# ==========================================================
+# OUTPUTS ÚTEIS
+# ==========================================================
+Outputs:
+  GlueDeveloperRoleArn:
+    Description: ARN da role do Glue Developer
+    Value: !GetAtt RoleGlueDeveloper.Arn
+
+  ECSTaskExecutionRoleArn:
+    Description: ARN da role usada nas ECS Tasks
+    Value: !GetAtt ECSTaskExecutionRole.Arn
+
+  ECSEventsRoleArn:
+    Description: ARN da role usada pelo EventBridge Scheduler
+    Value: !GetAtt ECSEventsRole.Arn  
