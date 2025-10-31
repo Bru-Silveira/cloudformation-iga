@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: Replica databases e crawlers da conta origem
 
 Resources:
-# Banco de dados do Glue (1 de 23)
+# Banco de dados do Glue (1 de 17)
   IGAPipefyBoxeDB:
     Type: AWS::Glue::Database
     Properties:
@@ -16,7 +16,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (2 de 23)
+# Banco de dados do Glue (2 de 17)
   IGAPipefyBrasilandiaDB:
     Type: AWS::Glue::Database
     Properties:
@@ -30,7 +30,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (3 de 23)
+# Banco de dados do Glue (3 de 17)
   IGAPipefyEptBasqueteGinasioEsportesDB:
     Type: AWS::Glue::Database
     Properties:
@@ -44,7 +44,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (4 de 23)
+# Banco de dados do Glue (4 de 17)
   IGAPipefyEptFutsalBairroPadreEternoDB:
     Type: AWS::Glue::Database
     Properties:
@@ -58,7 +58,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (5 de 23)
+# Banco de dados do Glue (5 de 17)
   IGAPipefyEptFutsalGinasioEsportesDB:
     Type: AWS::Glue::Database
     Properties:
@@ -72,7 +72,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (6 de 23)
+# Banco de dados do Glue (6 de 17)
   IGAPipefyEptGinasticaGinasioEsportesDB:
     Type: AWS::Glue::Database
     Properties:
@@ -86,7 +86,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (7 de 23)
+# Banco de dados do Glue (7 de 17)
   IGAPipefyEptRitmosDB:
     Type: AWS::Glue::Database
     Properties:
@@ -100,7 +100,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (8 de 23)
+# Banco de dados do Glue (8 de 17)
   IGAPipefyEptVoleiGinasioEsportesDB:
     Type: AWS::Glue::Database
     Properties:
@@ -114,7 +114,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (9 de 23)
+# Banco de dados do Glue (9 de 17)
   IGAPipefyGuaratinguetaAlcinaSoaresDB:
     Type: AWS::Glue::Database
     Properties:
@@ -128,7 +128,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (10 de 23)
+# Banco de dados do Glue (10 de 17)
   IGAPipefyGuaratinguetaAnaFaustaDB:
     Type: AWS::Glue::Database
     Properties:
@@ -142,7 +142,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (11 de 23)
+# Banco de dados do Glue (11 de 17)
   IGAPipefyGuaratinguetaMariaAparecidaDB:
     Type: AWS::Glue::Database
     Properties:
@@ -156,7 +156,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (12 de 23)
+# Banco de dados do Glue (12 de 17)
   IGAPipefyGuaratinguetaMariaJuliaDB:
     Type: AWS::Glue::Database
     Properties:
@@ -170,7 +170,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (13 de 23)
+# Banco de dados do Glue (13 de 17)
   IGAPipefyMulherPeriferia:
     Type: AWS::Glue::Database
     Properties:
@@ -184,7 +184,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (14 de 23)
+# Banco de dados do Glue (14 de 17)
   IGAPipefyPmqEventosDB:
     Type: AWS::Glue::Database
     Properties:
@@ -198,7 +198,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (15 de 23)
+# Banco de dados do Glue (15 de 17)
   IGAPipefyPmqFotografiaDB:
     Type: AWS::Glue::Database
     Properties:
@@ -212,7 +212,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (16 de 23)
+# Banco de dados do Glue (16 de 17)
   IGAPipefyPmqMidiasDB:
     Type: AWS::Glue::Database
     Properties:
@@ -226,7 +226,7 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (17 de 23)
+# Banco de dados do Glue (17 de 17)
   PipefyEscolaSorocabaDB:
     Type: AWS::Glue::Database
     Properties:
@@ -240,7 +240,7 @@ Resources:
             Permissions:
               - "ALL"
 
-  # Crawler do Glue - iga-pipefy-boxe-crawler
+# Crawler do Glue (1 de 17)
   IGAPipefyBoxeCrawler:
     Type: AWS::Glue::Crawler
     Properties:
@@ -275,3 +275,107 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
+# Crawler do Glue (2 de 17)
+  IGAPipefyBrasilandiaCrawler:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: "iga-pipefy-brasilandia-crawler"
+      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      DatabaseName: "iga-pipefy-brasilandia-db"
+      Targets:
+        S3Targets:
+          - Path: "s3://iga-pipefy-brasilandia/escola-brasilandia/"
+            Exclusions: []
+      RecrawlPolicy:
+        RecrawlBehavior: "CRAWL_EVERYTHING"
+      SchemaChangePolicy:
+        UpdateBehavior: "UPDATE_IN_DATABASE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"
+      LineageConfiguration:
+        CrawlerLineageSettings: "DISABLE"
+      Configuration: |
+        {
+          "Version": 1.0,
+          "CrawlerOutput": {
+            "Partitions": {
+              "AddOrUpdateBehavior": "InheritFromTable"
+            }
+          },
+          "Grouping": {
+            "TableGroupingPolicy": "CombineCompatibleSchemas",
+            "TableLevelConfiguration": 3
+          },
+          "CreatePartitionIndex": true
+        }
+      LakeFormationConfiguration:
+        UseLakeFormationCredentials: false
+
+# Crawler do Glue (3 de 17)
+  IGAPipefyEptBasqueteGinasioEsportesCrawler:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: "iga-pipefy-ept-basquete-ginasio-esportes-crawler"
+      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      DatabaseName: "iga-pipefy-ept-basquete-ginasio-esportes-db"
+      Targets:
+        S3Targets:
+          - Path: "s3://iga-pipefy-ept-basquete-ginasio-esportes"
+            Exclusions: []
+      RecrawlPolicy:
+        RecrawlBehavior: "CRAWL_EVERYTHING"
+      SchemaChangePolicy:
+        UpdateBehavior: "UPDATE_IN_DATABASE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"
+      LineageConfiguration:
+        CrawlerLineageSettings: "DISABLE"
+      Configuration: |
+        {
+          "Version": 1.0,
+          "CrawlerOutput": {
+            "Partitions": {
+              "AddOrUpdateBehavior": "InheritFromTable"
+            }
+          },
+          "Grouping": {
+            "TableGroupingPolicy": "CombineCompatibleSchemas",
+            "TableLevelConfiguration": 3
+          },
+          "CreatePartitionIndex": true
+        }
+      LakeFormationConfiguration:
+        UseLakeFormationCredentials: false
+
+# Crawler do Glue (4 de 17)
+  IGAPipefyEptFutsalBairroPadreEternoCrawler:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: "iga-pipefy-ept-futsal-bairro-padre-eterno-crawler"
+      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      DatabaseName: "iga-pipefy-ept-futsal-bairro-padre-eterno-db"
+      Targets:
+        S3Targets:
+          - Path: "s3://iga-pipefy-ept-futsal-bairro-padre-eterno"
+            Exclusions: []
+      RecrawlPolicy:
+        RecrawlBehavior: "CRAWL_EVERYTHING"
+      SchemaChangePolicy:
+        UpdateBehavior: "UPDATE_IN_DATABASE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"
+      LineageConfiguration:
+        CrawlerLineageSettings: "DISABLE"
+      Configuration: |
+        {
+          "Version": 1.0,
+          "CrawlerOutput": {
+            "Partitions": {
+              "AddOrUpdateBehavior": "InheritFromTable"
+            }
+          },
+          "Grouping": {
+            "TableGroupingPolicy": "CombineCompatibleSchemas",
+            "TableLevelConfiguration": 3
+          },
+          "CreatePartitionIndex": true
+        }
+      LakeFormationConfiguration:
+        UseLakeFormationCredentials: false
