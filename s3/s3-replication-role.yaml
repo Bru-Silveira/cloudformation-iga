@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Configura a role de replicação na conta origem (conta B)"
+
+Parameters:
+  AccountB:
+    Type: String
+    Default: "412381761647"
+    Description: "Conta origem (Bulk)"
+  AccountI:
+    Type: String
+    Default: "035786426797"
+    Description: "Conta destino (IGA)"
+
+Resources:
+  # ======= ROLE DE REPLICAÇÃO =======
+  S3ReplicationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: s3-cross-account-replication-role
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: s3.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: s3-replication-policy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetReplicationConfiguration
+                  - s3:ListBucket
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - s3:GetObjectVersion
+                  - s3:GetObjectVersionAcl
+                  - s3:GetObjectVersionTagging
+                Resource: "arn:aws:s3:::*/*"
+              - Effect: Allow
+                Action:
+                  - s3:ReplicateObject
+                  - s3:ReplicateDelete
+                  - s3:ReplicateTags
+                Resource: "arn:aws:s3:::*/*"

@@ -1,0 +1,1111 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Adiciona permissões de replicação aos buckets da Conta B (origem) para permitir que a Conta I (destino) leia objetos.
+
+Parameters:
+  DestinationAccountId:
+    Type: String
+    Default: "035786426797"    
+    Description: "Conta de destino (IGA)"
+
+Resources:
+  BucketPolicy1:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: athena-query-result-escola-sorocaba
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::athena-query-result-escola-sorocaba
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::athena-query-result-escola-sorocaba/*
+  
+  BucketPolicy2:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: athena-query-results-geral
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::athena-query-results-geral
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::athena-query-results-geral/*
+
+  BucketPolicy3:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: bw-iga-fabrica
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::bw-iga-fabrica
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::bw-iga-fabrica/*
+
+  BucketPolicy4:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: cloudformation-dados
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::cloudformation-dados
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::cloudformation-dados/*
+
+  BucketPolicy5:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: ead-dados-iga
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::ead-dados-iga
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::ead-dados-iga/*
+                      
+  BucketPolicy6:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-boxe-automacao-sheets
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-boxe-automacao-sheets
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-boxe-automacao-sheets/*
+            
+  BucketPolicy7:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-brasilandia-automacao-sheets
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-brasilandia-automacao-sheets
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-brasilandia-automacao-sheets/*
+
+  BucketPolicy8:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-ept-atletismo-sheets
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-ept-atletismo-sheets
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-ept-atletismo-sheets/*
+  
+  BucketPolicy9:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-ept-boxe-chines-sheets
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-ept-boxe-chines-sheets
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-ept-boxe-chines-sheets/*
+  
+  BucketPolicy10:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-ept-capoeira-sheets
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-ept-capoeira-sheets
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-ept-capoeira-sheets/*
+  
+  BucketPolicy11:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-ept-corrida-de-rua-sheets
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-ept-corrida-de-rua-sheets
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-ept-corrida-de-rua-sheets/*
+  
+  BucketPolicy12:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-ept-futebol-de-campo-sheets
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-ept-futebol-de-campo-sheets
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-ept-futebol-de-campo-sheets/*
+  
+  BucketPolicy13:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-ept-karate-sheets
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-ept-karate-sheets
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-ept-karate-sheets/*
+  
+  BucketPolicy14:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-guaratingueta-alcina-soares-automacao-sheets
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-guaratingueta-alcina-soares-automacao-sheets
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-guaratingueta-alcina-soares-automacao-sheets/*
+  
+  BucketPolicy15:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-boxe
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-boxe
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-boxe/*
+  
+  BucketPolicy16:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-brasilandia
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-brasilandia
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-brasilandia/*
+  
+  BucketPolicy17:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-alongamento
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-alongamento
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-alongamento/*
+  
+  BucketPolicy18:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-atletismo
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-atletismo
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-atletismo/*
+  
+  BucketPolicy19:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-basquete-ginasio-esportes
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-basquete-ginasio-esportes
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-basquete-ginasio-esportes/*
+  
+  BucketPolicy20:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-boxe-chines
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-boxe-chines
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-boxe-chines/*
+  
+  BucketPolicy21:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-capoeira
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-capoeira
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-capoeira/*
+  
+  BucketPolicy22:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-corrida-de-rua
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-corrida-de-rua
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-corrida-de-rua/*
+  
+  BucketPolicy23:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-futebol-de-campo
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-futebol-de-campo
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-futebol-de-campo/*
+  
+  BucketPolicy24:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-futsal-bairro-padre-eterno
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-futsal-bairro-padre-eterno
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-futsal-bairro-padre-eterno/*
+  
+  BucketPolicy25:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-futsal-ginasio-esportes
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-futsal-ginasio-esportes
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-futsal-ginasio-esportes/*
+  
+  BucketPolicy26:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-ginastica-ginasio-esportes
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-ginastica-ginasio-esportes
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-ginastica-ginasio-esportes/*
+  
+  BucketPolicy27:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-hidroginastica
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-hidroginastica
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-hidroginastica/*
+  
+  BucketPolicy28:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-karate
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-karate
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-karate/*
+  
+  BucketPolicy29:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-ritmos
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-ritmos
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-ritmos/*
+  
+  BucketPolicy30:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-ept-volei-ginasio-esportes
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-volei-ginasio-esportes
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-ept-volei-ginasio-esportes/*
+  
+  BucketPolicy31:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-guaratingueta-alcina-soares
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-alcina-soares
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-alcina-soares/*
+  
+  BucketPolicy32:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-guaratingueta-ana-fausta
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-ana-fausta
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-ana-fausta/*
+  
+  BucketPolicy33:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-guaratingueta-maria-aparecida
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-maria-aparecida
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-maria-aparecida/*
+  
+  BucketPolicy34:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-guaratingueta-maria-julia
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-maria-julia
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-maria-julia/*
+  
+  BucketPolicy35:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-mulher-periferia
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-mulher-periferia
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-mulher-periferia/*
+  
+  BucketPolicy36:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-pmq-eventos
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-pmq-eventos
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-pmq-eventos/*
+  
+  BucketPolicy37:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-pmq-fotografia
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-pmq-fotografia
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-pmq-fotografia/*
+  
+  BucketPolicy38:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-pipefy-pmq-midias
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-pipefy-pmq-midias
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-pipefy-pmq-midias/*
+  
+  BucketPolicy39:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: iga-sorocaba-automacao-sheets
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::iga-sorocaba-automacao-sheets
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::iga-sorocaba-automacao-sheets/*
+  
+  BucketPolicy40:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: pipefy-dados-escola-projovem
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::pipefy-dados-escola-projovem
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::pipefy-dados-escola-projovem/*
+  
+  BucketPolicy41:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: pipefy-dados-escola-sorocaba
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::pipefy-dados-escola-sorocaba
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::pipefy-dados-escola-sorocaba/*
+  
+  BucketPolicy42:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: pipefy-dados-fabrica
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::pipefy-dados-fabrica
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::pipefy-dados-fabrica/*
+  
+  BucketPolicy43:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: pipefy-dados-unificado
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::pipefy-dados-unificado
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::pipefy-dados-unificado/*
+  
+  BucketPolicy44:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: test-iga-escola-sorocaba
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowReplicationToDestinationAccount
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetReplicationConfiguration
+              - s3:ListBucket
+            Resource: !Sub arn:aws:s3:::test-iga-escola-sorocaba
+          - Sid: AllowReplicationOfObjects
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${DestinationAccountId}:root
+            Action:
+              - s3:GetObjectVersion
+              - s3:GetObjectVersionAcl
+              - s3:GetObjectVersionTagging
+            Resource: !Sub arn:aws:s3:::test-iga-escola-sorocaba/*
+  
+             
