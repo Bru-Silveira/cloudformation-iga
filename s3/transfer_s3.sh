@@ -1,24 +1,9 @@
-#!/bin/bash
-set -euo pipefail
+# Para rodar o comando do .sh no cdm, precisa sempre rodar esse comando primeiro:
+SET AWS_ACCESS_KEY_ID=*******
+SET AWS_SECRET_ACCESS_KEY=********
+SET AWS_SESSION_TOKEN=********
 
-REGION="us-east-1"
-DEST_ACCOUNT="035786426797"
+# Se quiser validar o template antes de rodar:
+aws cloudformation validate-template --template-body file://s3-buckets.yaml 
 
-# Origem (já existem na BulkdataLab)
-declare -A BUCKETS=(
-  ["pipefy-dados-sorocaba"]="iga-pipefy-dados-sorocaba-${DEST_ACCOUNT}-${REGION}"
-  ["iga-pipefy-pmq"]="iga-pipefy-pmq-${DEST_ACCOUNT}-${REGION}"
-  ["iga-pipefy-mulher"]="iga-pipefy-mulher-${DEST_ACCOUNT}-${REGION}"
-)
-
-for SRC in "${!BUCKETS[@]}"; do
-  DST=${BUCKETS[$SRC]}
-  echo "=== Copiando s3://$SRC -> s3://$DST ==="
-  # dry-run primeiro (opcional) - comente a linha abaixo para pular o dry-run
-  aws s3 sync s3://$SRC s3://$DST --source-region $REGION --region $REGION --exact-timestamps --dryrun
-
-  # execução real (descomente quando validar o dry-run)
-  aws s3 sync s3://$SRC s3://$DST --source-region $REGION --region $REGION --exact-timestamps
-
-  echo "✅ $SRC -> $DST concluído"
-done
+aws cloudformation create-stack --stack-name s3-buckets-stack --template-body file://s3-buckets.yaml --capabilities CAPABILITY_NAMED_IAM --region us-east-1

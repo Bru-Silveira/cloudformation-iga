@@ -1,0 +1,971 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Template CloudFormation para criar múltiplos buckets S3 na nova conta AWS
+
+Resources:
+  # Bucket (1 de 44)
+  AthenaQueryResultEscolaSorocaba:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      # Impede que o bucket seja apagado automaticamente se o stack CloudFormation for deletado
+    UpdateReplacePolicy: Retain   # Impede que o CloudFormation delete o bucket se ele precisar substituir o recurso (o CloudFormation cria um novo bucket, mas mantém o antigo)
+    Properties:
+      BucketName: !Sub 'athena-query-result-escola-sorocaba-${AWS::AccountId}'    # nomes de buckets s]ao globais, precisa mudar algo na hora de criar
+      PublicAccessBlockConfiguration:   # Bloqueia qualquer tipo de acesso público (altamente recomendado)
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    # Garante que o dono do bucket seja sempre o dono dos objetos dentro dele
+      VersioningConfiguration:
+        Status: Enabled   # Ativa o versionamento de objetos
+      BucketEncryption:   # Ativa a criptografia automática de todos os objetos.
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    # chave padrão do S3 (gratuita e automática)
+  
+  # Bucket (2 de 44)
+  AthenaQueryResultsGeral:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'athena-query-results-geral-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (3 de 44)
+  BwIgaFabrica:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'bw-iga-fabrica-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (4 de 44)
+  CloudformationDados:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'cloudformation-dados-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (5 de 44)
+  EadDadosIga:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'ead-dados-iga-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (6 de 44)
+  IgaBoxeAutomacaoSheets:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-boxe-automacao-sheets-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (7 de 44)
+  IgaBrasilandiaAutomacaoSheets:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-brasilandia-automacao-sheets-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (8 de 44)
+  IgaEptAtletismoSheets:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-ept-atletismo-sheets-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (9 de 44)
+  IgaEptBoxeChinesSheets:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-ept-boxe-chines-sheets-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (10 de 44)
+  IgaEptCapoeiraSheets:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-ept-capoeira-sheets-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (11 de 44)
+  IgaEptCorridaDeRuaSheets:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-ept-corrida-de-rua-sheets-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (12 de 44)
+  IgaEptFutebolDeCampoSheets:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-ept-futebol-de-campo-sheets-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (13 de 44)
+  IgaEptKarateSheets:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-ept-karate-sheets-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (14 de 44)
+  IgaGuaratinguetaAlcinaSoaresAutomacaoSheets:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-guaratingueta-alcina-soares-automacao-sheets-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (15 de 44)
+  IgaPipefyBoxe:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-boxe-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (16 de 44)
+  IgaPipefyBrasilandia:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-brasilandia-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (17 de 44)
+  IgaPipefyEptAlongamento:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-alongamento-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (18 de 44)
+  IgaPipefyEptAtletismo:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-atletismo-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (19 de 44)
+  IgaPipefyEptBasqueteGinasioEsportes:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-basquete-ginasio-esportes-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (20 de 44)
+  IgaPipefyEptBoxeChines:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-boxe-chines-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (21 de 44)
+  IgaPipefyEptCapoeira:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-capoeira-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (22 de 44)
+  IgaPipefyEptCorridaDeRua:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-corrida-de-rua-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (23 de 44)
+  IgaPipefyEptFutebolDeCampo:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-futebol-de-campo-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (24 de 44)
+  IgaPipefyEptFutsalBairroPadreEterno:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-futsal-bairro-padre-eterno-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (25 de 44)
+  IgaPipefyEptFutsalGinasioEsportes:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-futsal-ginasio-esportes-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (26 de 44)
+  IgaPipefyEptGinasticaGinasioEsportes:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-ginastica-ginasio-esportes-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (27 de 44)
+  IgaPipefyEptHidroginastica:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-hidroginastica-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (28 de 44)
+  IgaPipefyEptKarate:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-karate-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (29 de 44)
+  IgaPipefyEptRitmos:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-ritmos-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (30 de 44)
+  IgaPipefyEptVoleiGinasioEsportes:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-ept-volei-ginasio-esportes-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (31 de 44)
+  IgaPipefyGuaratinguetaAlcinaSoares:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-guaratingueta-alcina-soares-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (32 de 44)
+  IgaPipefyGuaratinguetaAnaFausta:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-guaratingueta-ana-fausta-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (33 de 44)
+  IgaPipefyGuaratinguetaMariaAparecida:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-guaratingueta-maria-aparecida-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (34 de 44)
+  IgaPipefyGuaratinguetaMariaJulia:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-guaratingueta-maria-julia-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (35 de 44)
+  IgaPipefyMulherPeriferia:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-mulher-periferia-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (36 de 44)
+  IgaPipefyPmqEventos:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-pmq-eventos-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (37 de 44)
+  IgaPipefyPmqFotografia:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-pmq-fotografia-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (38 de 44)
+  IgaPipefyPmqMidias:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-pipefy-pmq-midias-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256 
+  
+  # Bucket (39 de 44)
+  IgaSorocabaAutomacaoSheets:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'iga-sorocaba-automacao-sheets-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (40 de 44)
+  PipefyDadosEscolaProjovem:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'pipefy-dados-escola-projovem-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (41 de 44)
+  PipefyDadosEscolaSorocaba:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'pipefy-dados-escola-sorocaba-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (42 de 44)
+  PipefyDadosFabrica:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'pipefy-dados-fabrica-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (43 de 44)
+  PipefyDadosUnificado:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'pipefy-dados-unificado-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    
+  
+  # Bucket (44 de 44)
+  TestIgaEscolaSorocaba:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain      
+    UpdateReplacePolicy: Retain   
+    Properties:
+      BucketName: !Sub 'test-iga-escola-sorocaba-${AWS::AccountId}'
+      PublicAccessBlockConfiguration:   
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced    
+      VersioningConfiguration:
+        Status: Enabled   
+      BucketEncryption:   
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256    

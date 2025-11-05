@@ -7,4 +7,4 @@ SET AWS_SESSION_TOKEN=********
 aws cloudformation validate-template --template-body file://trash-glue-setup.yaml 
 
 # depois dele, roda o comando abaixo
-aws cloudformation create-stack --stack-name glue-crawler-and-database-stack --template-body file://trash-glue-setup.yaml --capabilities CAPABILITY_NAMED_IAM --region us-east-1
+aws cloudformation create-stack --stack-name glue-crawler-and-database-stack --template-body file://glue-setup.yaml --capabilities CAPABILITY_NAMED_IAM --region us-east-1

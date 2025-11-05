@@ -37,7 +37,7 @@ Resources:
             Action:
               - glue:GetUsageProfile
             Resource:
-              - arn:aws:glue:us-east-1:416046234086:usageProfile/developer
+              - arn:aws:glue:us-east-1:035786426797:usageProfile/developer
 
           - Effect: Allow
             Action:
@@ -63,14 +63,14 @@ Resources:
               - glue:GetTable
               - glue:CreateTable
             Resource:
-              - arn:aws:glue:us-east-1:416046234086:catalog
-              - arn:aws:glue:us-east-1:416046234086:database/*
-              - arn:aws:glue:us-east-1:416046234086:table/*
+              - arn:aws:glue:us-east-1:035786426797:catalog
+              - arn:aws:glue:us-east-1:035786426797:database/*
+              - arn:aws:glue:us-east-1:035786426797:table/*
 
           - Sid: GetGlueScripts
             Effect: Allow
             Action: s3:GetObject
-            Resource: arn:aws:s3:::aws-glue-assets-416046234086-us-east-1/scripts/*
+            Resource: arn:aws:s3:::aws-glue-assets-035786426797-us-east-1/scripts/*
 
           - Sid: GlueConsoleFullAccess
             Effect: Allow
@@ -122,7 +122,7 @@ Resources:
               - logs:GetLogEvents
               - logs:GetTransformer
               - logs:FilterLogEvents
-            Resource: arn:aws:logs:us-east-1:416046234086:log-group:*
+            Resource: arn:aws:logs:us-east-1:035786426797:log-group:*
 
           - Effect: Allow
             Action:
@@ -211,11 +211,11 @@ Resources:
           - Effect: Allow
             Action: "secretsmanager:GetSecretValue"
             Resource: 
-              - !Sub "arn:aws:secretsmanager:us-east-1:416046234086:secret:*" # policy vale para qualquer secret da conta e região onde o stack for criado
+              - !Sub "arn:aws:secretsmanager:us-east-1:035786426797:secret:*" # policy vale para qualquer secret da conta e região onde o stack for criado
           
           - Effect: Allow
             Action: "glue:StartCrawler"
-            Resource: "arn:aws:glue:us-east-1:416046234086:crawler/*"
+            Resource: "arn:aws:glue:us-east-1:035786426797:crawler/*"
             
 
   # Role para EventBridge Scheduler (para rodar tasks ECS)

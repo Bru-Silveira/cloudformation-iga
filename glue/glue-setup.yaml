@@ -2,11 +2,11 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: Replica databases e crawlers da conta origem
 
 Resources:
-# Banco de dados do Glue (1 de 17)
+  # Banco de dados do Glue (1 de 17)
   IGAPipefyBoxeDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-boxe-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -16,11 +16,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (2 de 17)
+  # Banco de dados do Glue (2 de 17)
   IGAPipefyBrasilandiaDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-brasilandia-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -30,11 +30,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (3 de 17)
+  # Banco de dados do Glue (3 de 17)
   IGAPipefyEptBasqueteGinasioEsportesDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-ept-basquete-ginasio-esportes-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -44,11 +44,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (4 de 17)
+  # Banco de dados do Glue (4 de 17)
   IGAPipefyEptFutsalBairroPadreEternoDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-ept-futsal-bairro-padre-eterno-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -58,11 +58,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (5 de 17)
+  # Banco de dados do Glue (5 de 17)
   IGAPipefyEptFutsalGinasioEsportesDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-ept-futsal-ginasio-esportes-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -72,13 +72,13 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (6 de 17)
+  # Banco de dados do Glue (6 de 17)
   IGAPipefyEptGinasticaGinasioEsportesDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
-        Name: "iga-pipefy-ept-ginastica-ginasio-esportes-db
+        Name: "iga-pipefy-ept-ginastica-ginasio-esportes-db"
         Description: "Banco de dados migrado da conta de origem"
         CreateTableDefaultPermissions:
           - Principal:
@@ -86,11 +86,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (7 de 17)
+  # Banco de dados do Glue (7 de 17)
   IGAPipefyEptRitmosDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-ept-ritmos-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -100,11 +100,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (8 de 17)
+  # Banco de dados do Glue (8 de 17)
   IGAPipefyEptVoleiGinasioEsportesDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-ept-volei-ginasio-esportes-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -114,11 +114,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (9 de 17)
+  # Banco de dados do Glue (9 de 17)
   IGAPipefyGuaratinguetaAlcinaSoaresDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-guaratingueta-alcina-soares-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -128,11 +128,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (10 de 17)
+  # Banco de dados do Glue (10 de 17)
   IGAPipefyGuaratinguetaAnaFaustaDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-guaratingueta-ana-fausta-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -142,11 +142,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (11 de 17)
+  # Banco de dados do Glue (11 de 17)
   IGAPipefyGuaratinguetaMariaAparecidaDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-guaratingueta-maria-aparecida-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -156,11 +156,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (12 de 17)
+  # Banco de dados do Glue (12 de 17)
   IGAPipefyGuaratinguetaMariaJuliaDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-guaratingueta-maria-julia-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -170,11 +170,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (13 de 17)
+  # Banco de dados do Glue (13 de 17)
   IGAPipefyMulherPeriferia:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-mulher-periferia"
         Description: "Banco de dados migrado da conta de origem"
@@ -184,11 +184,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (14 de 17)
+  # Banco de dados do Glue (14 de 17)
   IGAPipefyPmqEventosDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-pmq-eventos-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -198,11 +198,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (15 de 17)
+  # Banco de dados do Glue (15 de 17)
   IGAPipefyPmqFotografiaDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-pmq-fotografia-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -212,11 +212,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (16 de 17)
+  # Banco de dados do Glue (16 de 17)
   IGAPipefyPmqMidiasDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "iga-pipefy-pmq-midias-db"
         Description: "Banco de dados migrado da conta de origem"
@@ -226,11 +226,11 @@ Resources:
             Permissions:
               - "ALL"
 
-# Banco de dados do Glue (17 de 17)
+  # Banco de dados do Glue (17 de 17)
   PipefyEscolaSorocabaDB:
     Type: AWS::Glue::Database
     Properties:
-      CatalogId: "416046234086"  # ← substituir pelo ID da conta do IGA
+      CatalogId: "035786426797"  # substituir pelo ID da conta do IGA
       DatabaseInput:
         Name: "pipefy_escola_sorocaba_db"
         Description: "Banco de dados migrado da conta de origem"
@@ -240,13 +240,13 @@ Resources:
             Permissions:
               - "ALL"
 
-# Crawler do Glue (1 de 17)
+  # Crawler do Glue (1 de 17)
   IGAPipefyBoxeCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyBoxeDB
     Properties:
       Name: "iga-pipefy-boxe-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-boxe-db"
       Targets:
         S3Targets:
@@ -256,9 +256,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -276,13 +274,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (2 de 17)
+  # Crawler do Glue (2 de 17)
   IGAPipefyBrasilandiaCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyBrasilandiaDB
     Properties:
       Name: "iga-pipefy-brasilandia-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-brasilandia-db"
       Targets:
         S3Targets:
@@ -292,9 +290,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -312,13 +308,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (3 de 17)
+  # Crawler do Glue (3 de 17)
   IGAPipefyEptBasqueteGinasioEsportesCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyEptBasqueteGinasioEsportesDB
     Properties:
       Name: "iga-pipefy-ept-basquete-ginasio-esportes-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-ept-basquete-ginasio-esportes-db"
       Targets:
         S3Targets:
@@ -328,9 +324,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -348,13 +342,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (4 de 17)
+  # Crawler do Glue (4 de 17)
   IGAPipefyEptFutsalBairroPadreEternoCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyEptFutsalBairroPadreEternoDB
     Properties:
       Name: "iga-pipefy-ept-futsal-bairro-padre-eterno-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-ept-futsal-bairro-padre-eterno-db"
       Targets:
         S3Targets:
@@ -364,9 +358,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -384,13 +376,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (5 de 17)
+  # Crawler do Glue (5 de 17)
   IGAPipefyEptFutsalGinasioEsportesCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyEptFutsalGinasioEsportesDB
     Properties:
       Name: "iga-pipefy-ept-futsal-ginasio-esportes-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-ept-futsal-ginasio-esportes-db"
       Targets:
         S3Targets:
@@ -400,9 +392,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -420,13 +410,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (6 de 17)
+  # Crawler do Glue (6 de 17)
   IGAPipefyEptGinasticaGinasioEsportesCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyEptGinasticaGinasioEsportesDB
     Properties:
       Name: "iga-pipefy-ept-ginastica-ginasio-esportes-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-ept-ginastica-ginasio-esportes-db"
       Targets:
         S3Targets:
@@ -436,9 +426,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -456,13 +444,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (7 de 17)
+  # Crawler do Glue (7 de 17)
   IGAPipefyEptRitmosCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyEptRitmosDB
     Properties:
       Name: "iga-pipefy-ept-ritmos-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-ept-ritmos-db"
       Targets:
         S3Targets:
@@ -472,9 +460,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -492,13 +478,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (8 de 17)
+  # Crawler do Glue (8 de 17)
   IGAPipefyEptVoleiGinasioEsportesCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyEptVoleiGinasioEsportesDB
     Properties:
       Name: "iga-pipefy-ept-volei-ginasio-esportes-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-ept-volei-ginasio-esportes-db"
       Targets:
         S3Targets:
@@ -508,9 +494,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -528,13 +512,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (9 de 17)
+  # Crawler do Glue (9 de 17)
   IGAPipefyGuaratinguetaAlcinaSoaresCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyGuaratinguetaAlcinaSoaresDB
     Properties:
       Name: "iga-pipefy-guaratingueta-alcina-soares-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-guaratingueta-alcina-soares-db"
       Targets:
         S3Targets:
@@ -544,9 +528,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -564,13 +546,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (10 de 17)
+  # Crawler do Glue (10 de 17)
   IGAPipefyGuaratinguetaAnaFaustaCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyGuaratinguetaAnaFaustaDB
     Properties:
       Name: "iga-pipefy-guaratingueta-ana-fausta-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-guaratingueta-ana-fausta-db"
       Targets:
         S3Targets:
@@ -580,9 +562,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -600,13 +580,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (11 de 17)
+  # Crawler do Glue (11 de 17)
   IGAPipefyGuaratinguetaMariaAparecidaCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyGuaratinguetaMariaAparecidaDB
     Properties:
       Name: "iga-pipefy-guaratingueta-maria-aparecida-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-guaratingueta-maria-aparecida-db"
       Targets:
         S3Targets:
@@ -616,9 +596,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -636,13 +614,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (12 de 17)
+  # Crawler do Glue (12 de 17)
   IGAPipefyGuaratinguetaMariaJuliaCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyGuaratinguetaMariaJuliaDB
     Properties:
       Name: "iga-pipefy-guaratingueta-maria-julia-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-guaratingueta-maria-julia-db"
       Targets:
         S3Targets:
@@ -652,9 +630,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -672,13 +648,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (13 de 17)
+  # Crawler do Glue (13 de 17)
   IGAPipefyMulherPeriferiaCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyMulherPeriferia
     Properties:
       Name: "iga-pipefy-mulher-periferia-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-mulher-periferia"
       Targets:
         S3Targets:
@@ -688,9 +664,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -708,13 +682,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (14 de 17)
+  # Crawler do Glue (14 de 17)
   IGAPipefyPmqEventosCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyPmqEventosDB
     Properties:
       Name: "iga-pipefy-pmq-eventos-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-pmq-eventos-db"
       Targets:
         S3Targets:
@@ -724,9 +698,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -744,13 +716,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (15 de 17)
+  # Crawler do Glue (15 de 17)
   IGAPipefyPmqFotografiaCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyPmqFotografiaDB
     Properties:
       Name: "iga-pipefy-pmq-fotografia-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-pmq-fotografia-db"
       Targets:
         S3Targets:
@@ -760,9 +732,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -780,13 +750,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (16 de 17)
+  # Crawler do Glue (16 de 17)
   IGAPipefyPmqMidiasCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: IGAPipefyPmqMidiasDB
     Properties:
       Name: "iga-pipefy-pmq-midias-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "iga-pipefy-pmq-midias-db"
       Targets:
         S3Targets:
@@ -796,9 +766,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
@@ -816,13 +784,13 @@ Resources:
       LakeFormationConfiguration:
         UseLakeFormationCredentials: false
 
-# Crawler do Glue (17 de 17)
+  # Crawler do Glue (17 de 17)
   PipefyEscolaSorocabaCrawler:
     Type: AWS::Glue::Crawler
     DependsOn: PipefyEscolaSorocabaDB
     Properties:
       Name: "pipefy-escola-sorocaba-crawler"
-      Role: "arn:aws:iam::416046234086:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
+      Role: "arn:aws:iam::035786426797:role/role-glue-developer"  # substitua pelo ARN completo da role na conta destino
       DatabaseName: "pipefy_escola_sorocaba_db"
       Targets:
         S3Targets:
@@ -832,9 +800,7 @@ Resources:
         RecrawlBehavior: "CRAWL_EVERYTHING"
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
-        DeleteBehavior: "DEPRECATE_IN_DATABASE"
-      LineageConfiguration:
-        CrawlerLineageSettings: "DISABLE"
+        DeleteBehavior: "DEPRECATE_IN_DATABASE"      
       Configuration: |
         {
           "Version": 1.0,
