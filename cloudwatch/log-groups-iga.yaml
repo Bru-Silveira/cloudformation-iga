@@ -1,0 +1,390 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Clona CloudWatch LogGroups da Lab para IGA com mesma retenção'
+Resources:
+  awsgluecrawlers1:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/aws-glue/crawlers"
+      RetentionInDays: 30
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  awsgluejobserror2:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/aws-glue/jobs/error"
+      RetentionInDays: 7
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  awsgluejobslogsv23:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/aws-glue/jobs/logs-v2"
+      RetentionInDays: 7
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  awsgluejobsoutput4:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/aws-glue/jobs/output"
+      RetentionInDays: 7
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  awsgluepythonjobserror5:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/aws-glue/python-jobs/error"
+      RetentionInDays: 7
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  awsgluepythonjobsoutput6:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/aws-glue/python-jobs/output"
+      RetentionInDays: 7
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  awsgluesessionserror7:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/aws-glue/sessions/error"
+      RetentionInDays: 7
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  awssagemakerstudio8:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/aws/sagemaker/studio"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  bulklab9:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/bulklab"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigabrasilandiaautomacaosheets13:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-brasilandia-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptalongamentoautomacaosheets14:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-alongamento-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptatletismosheets15:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-atletismo-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptbasqueteginasioesportesautomacaosheets16:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-basquete-ginasio-esportes-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptboxechinessheets17:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-boxe-chines-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptcapoeirasheets18:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-capoeira-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptcorridaderuasheets19:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-corrida-de-rua-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptfuteboldecamposheets20:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-futebol-de-campo-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptfutsalbairropadreeternoautomacaosheets21:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-futsal-bairro-padre-eterno-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptfutsalginasioesportesautomacaosheets22:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-futsal-ginasio-esportes-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptginasticaginasioesportesautomacaosheets23:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-ginastica-ginasio-esportes-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaepthidroginasticaautomacaosheets24:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-hidroginastica-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptkaratesheets25:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-karate-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptritmosautomacaosheets26:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-ritmos-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaeptvoleiginasioesportesautomacaosheets27:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-ept-volei-ginasio-esportes-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaguaratinguetaalcinasoaresautomacaosheets28:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-guaratingueta-alcina-soares-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaguaratinguetaanafaustaautomacaosheets29:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-guaratingueta-ana-fausta-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaguaratinguetamariaaparecidaautomacaosheets30:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-guaratingueta-maria-aparecida-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigaguaratinguetamariajuliaautomacaosheets31:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-guaratingueta-maria-julia-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigamulherperiferiaautomacaosheets32:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-mulher-periferia-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyboxe33:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-boxe"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefybrasilandia34:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-brasilandia"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptalongamento35:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-alongamento"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptatletismo36:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-atletismo"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptbasqueteginasioesportes37:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-basquete-ginasio-esportes"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptboxechines38:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-boxe-chines"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptcapoeira39:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-capoeira"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptcorridaderua40:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-corrida-de-rua"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptfuteboldecampo41:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-futebol-de-campo"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptfutsalbairropadreeterno42:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-futsal-bairro-padre-eterno"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptfutsalginasioesportes43:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-futsal-ginasio-esportes"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptginasticaginasioesportes44:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-ginastica-ginasio-esportes"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyepthidroginastica45:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-hidroginastica"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptkarate46:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-karate"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptritmos47:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-ritmos"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyeptvoleiginasioesportes48:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-ept-volei-ginasio-esportes"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyguaratinguetaalcinasoares49:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-guaratingueta-alcina-soares"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyguaratinguetaanafausta50:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-guaratingueta-ana-fausta"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyguaratinguetamariaaparecida51:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-guaratingueta-maria-aparecida"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefyguaratinguetamariajulia52:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-guaratingueta-maria-julia"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefymulherperiferia53:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-mulher-periferia"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefypmq54:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-pmq"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefypmqeventos55:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-pmq-eventos"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefypmqfotografia56:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-pmq-fotografia"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapipefypmqmidias57:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pipefy-pmq-midias"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapmqautomacaosheets58:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pmq-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapmqeventosautomacaosheets59:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pmq-eventos-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapmqfotografiaautomacaosheets60:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pmq-fotografia-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigapmqmidiasautomacaosheets61:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-pmq-midias-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecsigasorocabaautomacaosheets62:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/iga-sorocaba-automacao-sheets"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecspipefyescolasorocaba63:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/pipefy-escola-sorocaba"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  ecstestpipefylogs64:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/ecs/test-pipefy-logs"
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  igaalunos65:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/iga/alunos"
+      RetentionInDays: 7
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+  datazone3yb7fkgt55y65jdev66:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "datazone-3yb7fkgt55y65j-dev"
+      RetentionInDays: 731
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain

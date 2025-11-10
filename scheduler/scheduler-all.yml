@@ -1,0 +1,1686 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'IGA - EventBridge Scheduler -> ECS RunTask (todos os schedules)'
+Resources:
+  EcsIgaBrasilandiaAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-brasilandia-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-brasilandia-automacao-sheets-task:7
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptAlongamentoAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-alongamento-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-alongamento-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptAtletismoAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-atletismo-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-atletismo-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptBasqueteGinasioEsportesAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-basquete-ginasio-esportes-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-basquete-ginasio-esportes-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptBoxeChinesAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-boxe-chines-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-boxe-chines-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptCapoeiraAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-capoeira-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-capoeira-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptCorridaDeRuaAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-corrida-de-rua-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-corrida-de-rua-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptFutebolDeCampoAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-futebol-de-campo-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-futebol-de-campo-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptFutsalBairroPadreEternoAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-futsal-bairro-padre-eterno-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-futsal-bairro-padre-eterno-automacao-sheets-task:2
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptFutsalGinasioEsportesAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-futsal-ginasio-esportes-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-futsal-ginasio-esportes-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptGinasticaGinasioEsportesAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-ginastica-ginasio-esportes-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-ginastica-ginasio-esportes-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptHidroginasticaAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-hidroginastica-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-hidroginastica-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptKarateAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-karate-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-karate-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptRitmosAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-ritmos-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-ritmos-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaEptVoleiGinasioEsportesAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-ept-volei-ginasio-esportes-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-ept-volei-ginasio-esportes-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaGuaratinguetaAlcinaSoaresAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-guaratingueta-alcina-soares-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-guaratingueta-alcina-soares-automacao-sheets-task:3
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaGuaratinguetaAnaFaustaAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-guaratingueta-ana-fausta-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-guaratingueta-ana-fausta-automacao-sheets-task:2
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaGuaratinguetaMariaAparecidaAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-guaratingueta-maria-aparecida-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-guaratingueta-maria-aparecida-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaGuaratinguetaMariaJuliaAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-guaratingueta-maria-julia-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-guaratingueta-maria-julia-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaMulherPeriferiaAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-mulher-periferia-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-mulher-periferia-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyBoxeScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-boxe-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-boxe-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyBrasilandiaScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-brasilandia-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-brasilandia-task:3
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptAlongamentoScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-alongamento-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-alongamento-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptAtletismoScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-atletismo-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-atletismo-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptBasqueteGinasioEsportesScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-basquete-ginasio-esportes-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-basquete-ginasio-esportes-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptBoxeChinesScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-boxe-chines-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-boxe-chines-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptCapoeiraScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-capoeira-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-capoeira-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptCorridaDeRuaScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-corrida-de-rua-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-corrida-de-rua-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptFutebolDeCampoScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-futebol-de-campo-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-futebol-de-campo-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptFutsalBairroPadreEternoScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-futsal-bairro-padre-eterno-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-futsal-bairro-padre-eterno-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptFutsalGinasioEsportesScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-futsal-ginasio-esportes-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-futsal-ginasio-esportes-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptGinasticaGinasioEsportesScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-ginastica-ginasio-esportes-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-ginastica-ginasio-esportes-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptHidroginasticaScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-hidroginastica-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-hidroginastica-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptKarateScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-karate-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-karate-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptRitmosScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-ritmos-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-ritmos-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEptVoleiGinasioEsportesScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-ept-volei-ginasio-esportes-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-ept-volei-ginasio-esportes-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyEscolaSorocabaScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-escola-sorocaba-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/pipefy-escola-sorocaba-task:7
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyGuaratinguetaAlcinaSoaresScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-guaratingueta-alcina-soares-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-guaratingueta-alcina-soares-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyGuaratinguetaAnaFaustaScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-guaratingueta-ana-fausta-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-guaratingueta-ana-fausta-task:2
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyGuaratinguetaMariaAparecidaScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-guaratingueta-maria-aparecida-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-guaratingueta-maria-aparecida-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyGuaratinguetaMariaJuliaScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-guaratingueta-maria-julia-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-guaratingueta-maria-julia-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyMulherPeriferiaScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-mulher-periferia-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-mulher-periferia-task:5
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyPmqEventosScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-pmq-eventos-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-pmq-eventos-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyPmqFotografiaScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-pmq-fotografia-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-pmq-fotografia-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyPmqMidiasScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-pmq-midias-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-pmq-midias-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPipefyPmqScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pipefy-pmq-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pipefy-pmq-task:3
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPmqAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pmq-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pmq-automacao-sheets-task:2
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPmqEventosAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pmq-eventos-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pmq-eventos-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPmqFotografiaAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pmq-fotografia-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pmq-fotografia-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaPmqMidiasAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-pmq-midias-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 7 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-pmq-midias-automacao-sheets-task:1
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
+  EcsIgaSorocabaAutomacaoSheetsScheduleSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ecs-iga-sorocaba-automacao-sheets-schedule
+      GroupName: default
+      State: ENABLED
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      ScheduleExpression: "cron(0 6 * * ? *)"
+      ScheduleExpressionTimezone: America/Sao_Paulo
+      Target:
+        Arn: arn:aws:ecs:us-east-1:035786426797:cluster/ecs-cluster-iga
+        RoleArn: arn:aws:iam::035786426797:role/ecsEventsRole
+        EcsParameters:
+          LaunchType: FARGATE
+          PlatformVersion: LATEST
+          TaskCount: 1
+          TaskDefinitionArn: arn:aws:ecs:us-east-1:035786426797:task-definition/iga-sorocaba-automacao-sheets-task:3
+          NetworkConfiguration:
+            AwsvpcConfiguration:
+              AssignPublicIp: ENABLED
+              SecurityGroups:
+                - sg-04bc8d20f8b95cdad
+              Subnets:
+                - subnet-03cf93fe0a0b2eafa
+                - subnet-048a654acf75261bf
+                - subnet-04842246927f6e89c
+                - subnet-0c6c4f7f891b1d6a3
+                - subnet-0818f696677d996bc
+                - subnet-07e09c9efa448e350
+        RetryPolicy:
+          MaximumEventAgeInSeconds: 86400
+          MaximumRetryAttempts: 185
