@@ -1,0 +1,519 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Cria o cluster ECS "ecs-cluster-iga" e todos os repositórios ECR do cliente IGA.
+
+Resources:
+  # ==========================
+  # CLUSTER ECS
+  # ==========================
+  IGAECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: ecs-cluster-iga
+      ClusterSettings:
+        - Name: containerInsights
+          Value: enabled
+      Tags:
+        - Key: Owner
+          Value: IGA
+        - Key: Environment
+          Value: Prod
+
+  # ==========================
+  # REPOSITÓRIOS ECR
+  # ==========================
+
+  IGABoxeAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-boxe-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGABrasilandiaAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-brasilandia-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTAlongamentoAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-alongamento-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTAtletismoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-atletismo-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTBasqueteGinasioEsportesAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-basquete-ginasio-esportes-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTBoxeChinesSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-boxe-chines-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTCapoeiraSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-capoeira-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTCorridaDeRuaSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-corrida-de-rua-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTFutebolDeCampoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-futebol-de-campo-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTFutsalBairroPadreEternoAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-futsal-bairro-padre-eterno-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTFutsalGinasioEsportesAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-futsal-ginasio-esportes-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTGinasticaGinasioEsportesAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-ginastica-ginasio-esportes-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTHidroginasticaAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-hidroginastica-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTHidroginasticaSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-hidroginastica-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTKarateSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-karate-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTRitmosAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-ritmos-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAEPTVoleiGinasioEsportesAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-ept-volei-ginasio-esportes-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAGuaratinguetaAlcinaSoaresAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-guaratingueta-alcina-soares-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAGuaratinguetaAnaFaustaAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-guaratingueta-ana-fausta-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAGuaratinguetaMariaAparecidaAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-guaratingueta-maria-aparecida-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAGuaratinguetaMariaJuliaAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-guaratingueta-maria-julia-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAMulherPeriferiaAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-mulher-periferia-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyAlongamento:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-alongamento
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyBoxe:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-boxe
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyBrasilandia:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-brasilandia
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTAlongamento:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-alongamento
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTEscAtletismo:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-atletismo
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTBasqueteGinasioEsportes:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-basquete-ginasio-esportes
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTBoxeChines:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-boxe-chines
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTCapoeira:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-capoeira
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTCorridaDeRua:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-corrida-de-rua
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTFutebolDeCampo:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-futebol-de-campo
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTFutsalBairroPadreEterno:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-futsal-bairro-padre-eterno
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTFutsalGinasioEsportes:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-futsal-ginasio-esportes
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTGinasticaGinasioEsportes:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-ginastica-ginasio-esportes
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTHidroginastica:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-hidroginastica
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPtKarate:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-karate
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTRitmos:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-ritmos
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEPTVoleiGinasioEsportes:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-ept-volei-ginasio-esportes
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyEscolaSorocaba:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-escola-sorocaba
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyGuaratinguetaAlcinaSoares:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-guaratingueta-alcina-soares
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyGuaratinguetaAnaFausta:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-guaratingueta-ana-fausta
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyGuaratinguetaMariaAparecida:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-guaratingueta-maria-aparecida
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyGuaratinguetaMariaJulia:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-guaratingueta-maria-julia
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyHidroginastica:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-hidroginastica
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyMulherPeriferia:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-mulher-periferia
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyPmqEventos:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-pmq-eventos
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyPmqFotografia:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-pmq-fotografia
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPipefyPmqMidias:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pipefy-pmq-midias
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPmqEventosAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pmq-eventos-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPmqFotografiaAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pmq-fotografia-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAPmqMidiasAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-pmq-midias-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGASorocabaAutomacaoSheets:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: iga-sorocaba-automacao-sheets
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+  IGAAlunos:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: "iga/alunos"
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EncryptionConfiguration:
+        EncryptionType: AES256
+
+Outputs:
+  ClusterName:
+    Description: Nome do cluster ECS criado
+    Value: !Ref IGAECSCluster
+
+  ExampleRepoUri:
+    Description: URI do repositório de exemplo (iga-boxe-automacao-sheets)
+    Value: !GetAtt IGABoxeAutomacaoSheets.RepositoryUri
