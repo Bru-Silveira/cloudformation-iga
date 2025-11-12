@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'Policies para permitir replicação da conta Bulk (origem) para conta IGA (destino)'
+Description: 'Policies para permitir replicação da conta origem para conta destino e acesso do ECS ao bucket'
 
 Parameters:
   SourceAccountId:
@@ -34,6 +34,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::athena-query-result-escola-sorocaba-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::athena-query-result-escola-sorocaba-035786426797
+              - arn:aws:s3:::athena-query-result-escola-sorocaba-035786426797/* 
 
   BucketPolicy2:
     Type: AWS::S3::BucketPolicy
@@ -60,6 +72,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::athena-query-results-geral-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::athena-query-results-geral-035786426797
+              - arn:aws:s3:::athena-query-results-geral-035786426797/*
 
   BucketPolicy3:
     Type: AWS::S3::BucketPolicy
@@ -86,6 +110,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::bw-iga-fabrica-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::bw-iga-fabrica-035786426797
+              - arn:aws:s3:::bw-iga-fabrica-035786426797/*
 
   BucketPolicy4:
     Type: AWS::S3::BucketPolicy
@@ -112,6 +148,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::cloudformation-dados-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::cloudformation-dados-035786426797
+              - arn:aws:s3:::cloudformation-dados-035786426797/*
 
   BucketPolicy5:
     Type: AWS::S3::BucketPolicy
@@ -138,6 +186,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::ead-dados-iga-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::ead-dados-iga-035786426797
+              - arn:aws:s3:::ead-dados-iga-035786426797/*
 
   BucketPolicy6:
     Type: AWS::S3::BucketPolicy
@@ -164,6 +224,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-boxe-automacao-sheets-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-boxe-automacao-sheets-035786426797
+              - arn:aws:s3:::iga-boxe-automacao-sheets-035786426797/*
 
   BucketPolicy7:
     Type: AWS::S3::BucketPolicy
@@ -190,6 +262,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-brasilandia-automacao-sheets-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-brasilandia-automacao-sheets-035786426797
+              - arn:aws:s3:::iga-brasilandia-automacao-sheets-035786426797/*
 
   BucketPolicy8:
     Type: AWS::S3::BucketPolicy
@@ -216,6 +300,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-ept-atletismo-sheets-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-ept-atletismo-sheets-035786426797
+              - arn:aws:s3:::iga-ept-atletismo-sheets-035786426797/*
 
   BucketPolicy9:
     Type: AWS::S3::BucketPolicy
@@ -242,6 +338,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-ept-boxe-chines-sheets-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-ept-boxe-chines-sheets-035786426797
+              - arn:aws:s3:::iga-ept-boxe-chines-sheets-035786426797/*
 
   BucketPolicy10:
     Type: AWS::S3::BucketPolicy
@@ -268,6 +376,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-ept-capoeira-sheets-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-ept-capoeira-sheets-035786426797
+              - arn:aws:s3:::iga-ept-capoeira-sheets-035786426797/*
 
   BucketPolicy11:
     Type: AWS::S3::BucketPolicy
@@ -294,6 +414,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-ept-corrida-de-rua-sheets-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-ept-corrida-de-rua-sheets-035786426797
+              - arn:aws:s3:::iga-ept-corrida-de-rua-sheets-035786426797/*
 
   BucketPolicy12:
     Type: AWS::S3::BucketPolicy
@@ -320,6 +452,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-ept-futebol-de-campo-sheets-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-ept-futebol-de-campo-sheets-035786426797
+              - arn:aws:s3:::iga-ept-futebol-de-campo-sheets-035786426797/*
 
   BucketPolicy13:
     Type: AWS::S3::BucketPolicy
@@ -346,6 +490,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-ept-karate-sheets-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-ept-karate-sheets-035786426797
+              - arn:aws:s3:::iga-ept-karate-sheets-035786426797/*
 
   BucketPolicy14:
     Type: AWS::S3::BucketPolicy
@@ -372,6 +528,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-guaratingueta-alcina-soares-automacao-sheets-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-guaratingueta-alcina-soares-automacao-sheets-035786426797
+              - arn:aws:s3:::iga-guaratingueta-alcina-soares-automacao-sheets-035786426797/*
 
   BucketPolicy15:
     Type: AWS::S3::BucketPolicy
@@ -398,6 +566,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-boxe-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-boxe-035786426797
+              - arn:aws:s3:::iga-pipefy-boxe-035786426797/*
 
   BucketPolicy16:
     Type: AWS::S3::BucketPolicy
@@ -424,6 +604,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-brasilandia-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-brasilandia-035786426797
+              - arn:aws:s3:::iga-pipefy-brasilandia-035786426797/*
 
   BucketPolicy17:
     Type: AWS::S3::BucketPolicy
@@ -450,6 +642,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-alongamento-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-alongamento-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-alongamento-035786426797/*
 
   BucketPolicy18:
     Type: AWS::S3::BucketPolicy
@@ -476,6 +680,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-atletismo-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-atletismo-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-atletismo-035786426797/*
 
   BucketPolicy19:
     Type: AWS::S3::BucketPolicy
@@ -502,6 +718,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-basquete-ginasio-esportes-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-basquete-ginasio-esportes-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-basquete-ginasio-esportes-035786426797/*
 
   BucketPolicy20:
     Type: AWS::S3::BucketPolicy
@@ -528,6 +756,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-boxe-chines-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-boxe-chines-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-boxe-chines-035786426797/*
 
   BucketPolicy21:
     Type: AWS::S3::BucketPolicy
@@ -554,6 +794,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-capoeira-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-capoeira-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-capoeira-035786426797/*
 
   BucketPolicy22:
     Type: AWS::S3::BucketPolicy
@@ -580,6 +832,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-corrida-de-rua-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-corrida-de-rua-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-corrida-de-rua-035786426797/*
 
   BucketPolicy23:
     Type: AWS::S3::BucketPolicy
@@ -606,6 +870,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-futebol-de-campo-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-futebol-de-campo-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-futebol-de-campo-035786426797/*
 
   BucketPolicy24:
     Type: AWS::S3::BucketPolicy
@@ -632,6 +908,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-futsal-bairro-padre-eterno-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-futsal-bairro-padre-eterno-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-futsal-bairro-padre-eterno-035786426797/*
 
   BucketPolicy25:
     Type: AWS::S3::BucketPolicy
@@ -658,6 +946,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-futsal-ginasio-esportes-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-futsal-ginasio-esportes-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-futsal-ginasio-esportes-035786426797/*
 
   BucketPolicy26:
     Type: AWS::S3::BucketPolicy
@@ -684,6 +984,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-ginastica-ginasio-esportes-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-ginastica-ginasio-esportes-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-ginastica-ginasio-esportes-035786426797/*
 
   BucketPolicy27:
     Type: AWS::S3::BucketPolicy
@@ -710,6 +1022,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-hidroginastica-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-hidroginastica-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-hidroginastica-035786426797/*
 
   BucketPolicy28:
     Type: AWS::S3::BucketPolicy
@@ -736,6 +1060,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-karate-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-karate-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-karate-035786426797/*
 
   BucketPolicy29:
     Type: AWS::S3::BucketPolicy
@@ -762,6 +1098,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-ritmos-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-ritmos-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-ritmos-035786426797/*
 
   BucketPolicy30:
     Type: AWS::S3::BucketPolicy
@@ -788,6 +1136,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-ept-volei-ginasio-esportes-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-ept-volei-ginasio-esportes-035786426797
+              - arn:aws:s3:::iga-pipefy-ept-volei-ginasio-esportes-035786426797/*
 
   BucketPolicy31:
     Type: AWS::S3::BucketPolicy
@@ -814,6 +1174,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-alcina-soares-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-guaratingueta-alcina-soares-035786426797
+              - arn:aws:s3:::iga-pipefy-guaratingueta-alcina-soares-035786426797/*
 
   BucketPolicy32:
     Type: AWS::S3::BucketPolicy
@@ -840,6 +1212,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-ana-fausta-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-guaratingueta-ana-fausta-035786426797
+              - arn:aws:s3:::iga-pipefy-guaratingueta-ana-fausta-035786426797/*
 
   BucketPolicy33:
     Type: AWS::S3::BucketPolicy
@@ -866,6 +1250,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-maria-aparecida-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-guaratingueta-maria-aparecida-035786426797
+              - arn:aws:s3:::iga-pipefy-guaratingueta-maria-aparecida-035786426797/*
 
   BucketPolicy34:
     Type: AWS::S3::BucketPolicy
@@ -892,6 +1288,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-guaratingueta-maria-julia-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-guaratingueta-maria-julia-035786426797
+              - arn:aws:s3:::iga-pipefy-guaratingueta-maria-julia-035786426797/*
 
   BucketPolicy35:
     Type: AWS::S3::BucketPolicy
@@ -918,6 +1326,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-mulher-periferia-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-mulher-periferia-035786426797
+              - arn:aws:s3:::iga-pipefy-mulher-periferia-035786426797/*
 
   BucketPolicy36:
     Type: AWS::S3::BucketPolicy
@@ -944,6 +1364,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-pmq-eventos-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-pmq-eventos-035786426797
+              - arn:aws:s3:::iga-pipefy-pmq-eventos-035786426797/*
 
   BucketPolicy37:
     Type: AWS::S3::BucketPolicy
@@ -970,6 +1402,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-pmq-fotografia-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-pmq-fotografia-035786426797
+              - arn:aws:s3:::iga-pipefy-pmq-fotografia-035786426797/*
 
   BucketPolicy38:
     Type: AWS::S3::BucketPolicy
@@ -996,6 +1440,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-pipefy-pmq-midias-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-pipefy-pmq-midias-035786426797
+              - arn:aws:s3:::iga-pipefy-pmq-midias-035786426797/*
 
   BucketPolicy39:
     Type: AWS::S3::BucketPolicy
@@ -1022,6 +1478,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::iga-sorocaba-automacao-sheets-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::iga-sorocaba-automacao-sheets-035786426797
+              - arn:aws:s3:::iga-sorocaba-automacao-sheets-035786426797/*
 
   BucketPolicy40:
     Type: AWS::S3::BucketPolicy
@@ -1048,6 +1516,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::pipefy-dados-escola-projovem-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::pipefy-dados-escola-projovem-035786426797
+              - arn:aws:s3:::pipefy-dados-escola-projovem-035786426797/*
 
   BucketPolicy41:
     Type: AWS::S3::BucketPolicy
@@ -1074,6 +1554,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::pipefy-dados-escola-sorocaba-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::pipefy-dados-escola-sorocaba-035786426797
+              - arn:aws:s3:::pipefy-dados-escola-sorocaba-035786426797/*
 
   BucketPolicy42:
     Type: AWS::S3::BucketPolicy
@@ -1100,6 +1592,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::pipefy-dados-fabrica-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::pipefy-dados-fabrica-035786426797
+              - arn:aws:s3:::pipefy-dados-fabrica-035786426797/*
 
   BucketPolicy43:
     Type: AWS::S3::BucketPolicy
@@ -1126,6 +1630,18 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::pipefy-dados-unificado-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::pipefy-dados-unificado-035786426797
+              - arn:aws:s3:::pipefy-dados-unificado-035786426797/*
 
   BucketPolicy44:
     Type: AWS::S3::BucketPolicy
@@ -1152,3 +1668,15 @@ Resources:
               - s3:ReplicateDelete
               - s3:ReplicateTags
             Resource: !Sub arn:aws:s3:::test-iga-escola-sorocaba-035786426797/*
+          - Sid: AllowEcsTaskAccess
+            Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::035786426797:role/ecsTaskExecutionRole
+            Action:
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:PutObject
+              - s3:DeleteObject
+            Resource:
+              - arn:aws:s3:::test-iga-escola-sorocaba-035786426797
+              - arn:aws:s3:::test-iga-escola-sorocaba-035786426797/*
