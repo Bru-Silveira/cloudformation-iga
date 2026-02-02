@@ -8,7 +8,7 @@ Resources:
     DeletionPolicy: Retain      # Impede que o bucket seja apagado automaticamente se o stack CloudFormation for deletado
     UpdateReplacePolicy: Retain   # Impede que o CloudFormation delete o bucket se ele precisar substituir o recurso (o CloudFormation cria um novo bucket, mas mantém o antigo)
     Properties:
-      BucketName: !Sub 'athena-query-result-escola-sorocaba-${AWS::AccountId}'    # nomes de buckets s]ao globais, precisa mudar algo na hora de criar
+      BucketName: !Sub 'athena-query-result-escola-sorocaba-${AWS::AccountId}'    # nomes de buckets são globais, precisa mudar algo na hora de criar
       PublicAccessBlockConfiguration:   # Bloqueia qualquer tipo de acesso público (altamente recomendado)
         BlockPublicAcls: true
         BlockPublicPolicy: true
